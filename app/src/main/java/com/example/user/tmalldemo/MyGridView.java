@@ -24,7 +24,11 @@ public class MyGridView extends GridView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         //设置heightMeasureSpec为AT_MOST模式
-        heightMeasureSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE>>2,MeasureSpec.AT_MOST);
+        /**
+         * Measure specification mode: The child can be as large as it wants up
+         * to the specified size.
+         */
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
     }
