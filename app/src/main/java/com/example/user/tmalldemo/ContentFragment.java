@@ -217,7 +217,6 @@ public class ContentFragment extends Fragment {
             }
             //以下才是将数据和item绑定
             viewHolder.textView.setText(bean.getText());
-
             ArrayList<GridBean> beans = bean.getData();
             viewHolder.gridView.setAdapter(adapter);
             adapter.setData(beans);
@@ -283,9 +282,19 @@ public class ContentFragment extends Fragment {
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-            GridBean bean = data.get(position);
+            final GridBean bean = data.get(position);
             viewHolder.textView.setText(bean.getName());
             Picasso.with(context).load(bean.getImg()).into(viewHolder.image);
+            /**
+             * 这里就是点击右边的item的响应事件，现在是用toast来代替
+             */
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "" + bean.getName(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
             return convertView;
         }
 
